@@ -8,6 +8,12 @@ router.get("/", function(req, res){
    }); 
 });
 
+router.get("/:id", function(req, res){
+   Thing.findById(req.params.id).then(function(thing){
+       res.send(thing);
+   }); 
+});
+
 router.post("/", function(req, res){
    var thing = new Thing(req.body);
    thing.save(function(err, _thing){
@@ -17,6 +23,17 @@ router.post("/", function(req, res){
       }
       else
          res.send(thing);
+   });
+});
+
+router.post("/:id/delete", function(req, res){
+   Thing.remove({_id: req.params.id}, function(err){
+      if(err){
+         res.status(422); 
+         res.send(err);
+      }
+      else
+         res.send({});
    });
 });
 

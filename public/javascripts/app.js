@@ -9,6 +9,10 @@ app.config(function($routeProvider, $locationProvider){
         controller: 'ThingsCtrl',
         templateUrl: '/templates/things.html'
     })
+    .when("/things/:id/edit", {
+        controller: 'ThingsEditCtrl',
+        templateUrl: '/templates/things_edit.html'
+    })
     .when("/things/new", {
         controller: 'ThingsNewCtrl',
         templateUrl: '/templates/things_new.html'
