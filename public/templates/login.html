@@ -1,8 +1,6 @@
 <form class="form">
     <div class="form-group">
     <label for="user">Choose a User</label>
-    {{users}}
     <select class="form-control" id="user" ng-model="user" ng-options="user.username for user in users"></select>
     </div>
 </form>
-{{ user }}

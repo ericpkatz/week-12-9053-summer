@@ -1,5 +1,12 @@
 angular.module("my_world")
-    .controller("LoginCtrl", function($scope){
+    .controller("LoginCtrl", function($scope, $location, NavSvc, AuthSvc){
+        console.log(AuthSvc.user.authenticated())
+        if(AuthSvc.user.authenticated()){
+            AuthSvc.user.username = null;
+            $location.path("/");
+            return;
+        }
+        NavSvc.setSelectedPath("/login");
         var users = [
             {
                 username: "Moe",
@@ -20,8 +27,10 @@ angular.module("my_world")
         $scope.user = users[0];
         
         $scope.$watch("user", function(curr, prev){
-            if(curr.id != -1)
-                console.log("log in " +  curr.username);
+            if(curr.id != -1){
+                AuthSvc.user.username = curr.username;
+                $location.path("/");
+            }
         });
         
     });

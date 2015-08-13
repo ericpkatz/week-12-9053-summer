@@ -20,6 +20,10 @@ app.config(function($routeProvider, $locationProvider){
     .when("/login", {
         controller: 'LoginCtrl',
         templateUrl: '/templates/login.html'
+    })
+    .when("/logout", {
+        controller: 'LoginCtrl',
+        templateUrl: '/templates/login.html'
     });
     $locationProvider.html5Mode(true);
 });

@@ -7,15 +7,8 @@ html
     script(src="/vendor/angular/angular.js")
     script(src="/vendor/angular-route/angular-route.js")
     script(src="/javascripts/app.js")
-    script(src="/javascripts/home/home_ctrl.js")
-    script(src="/javascripts/things/things_new_ctrl.js")
-    script(src="/javascripts/things/things_ctrl.js")
-    script(src="/javascripts/people/people_ctrl.js")
-    script(src="/javascripts/things/things_svc.js")
-    script(src="/javascripts/main_nav/main_nav.js")
-    script(src="/javascripts/main_nav/nav_svc.js")
-    script(src="/javascripts/auth/login_ctrl.js")
-    script(src="/javascripts/auth/auth_svc.js")
+    for script in scripts
+      script(src="#{script}")
     base(href="/")
   body(ng-app='my_world')
     block content

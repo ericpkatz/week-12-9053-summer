@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var recursive = require('recursive-readdir');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -32,6 +33,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next){
+  recursive('public/javascripts', ['app.js'], function (err, files) {
+    var scripts = files.map(function(file){
+      return file.replace("public", '');
+    })
+    res.locals.scripts = scripts;
+    next();
+  // Files is an array of filename 
+  });
+})
+
 
 app.use('/', routes);
 app.use('/users', users);
