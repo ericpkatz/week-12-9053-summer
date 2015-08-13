@@ -16,6 +16,10 @@ app.config(function($routeProvider, $locationProvider){
     .when("/people", {
         controller: 'PeopleCtrl',
         templateUrl: '/templates/people.html'
+    })
+    .when("/login", {
+        controller: 'LoginCtrl',
+        templateUrl: '/templates/login.html'
     });
     $locationProvider.html5Mode(true);
 });

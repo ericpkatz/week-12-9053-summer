@@ -1,5 +1,6 @@
 angular.module("my_world")
-    .controller("ThingsNewCtrl", function($scope, $http, $location, ThingsSvc){
+    .controller("ThingsNewCtrl", function($scope, $http, $location, ThingsSvc, NavSvc){
+        NavSvc.setSelectedPath("/things");
         $scope.thing = {
         };
         $scope.save = function(){

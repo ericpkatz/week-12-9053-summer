@@ -4,23 +4,12 @@ angular.module("my_world")
         return {
             restrict: 'E',
             templateUrl: '/templates/main_nav.html',
-            controller: function($scope){
-                var tabs = [
-                    {
-                        path: "/",
-                        title: "Home"
-                    },
-                    {
-                        path: "/things",
-                        title: "Things"
-                    },
-                    {
-                        path: "/people",
-                        title: "People"
-                    }
-                ];
-                $scope.tabs = tabs;
-                
+            controller: function($scope, NavSvc, AuthSvc){
+                $scope.tabs = NavSvc.tabs;
+                $scope.user = AuthSvc.user
+            },
+            scope: {
+                mode: '@'
             }
         };
     });

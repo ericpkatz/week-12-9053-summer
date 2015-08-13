@@ -14,5 +14,8 @@ router.get('/things/new', function(req, res, next) {
 router.get('/people', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+router.get('/login', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
 
 module.exports = router;
